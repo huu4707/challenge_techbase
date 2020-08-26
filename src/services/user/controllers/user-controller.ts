@@ -69,8 +69,9 @@ export class UserController {
       if (existEmail) return res.status(HttpStatus.BAD_REQUEST).send(buildErrorMessage(userErrorDetails.E_2OO()));
       data.password = await hash(data.password, Number(process.env.BCRYPT_SALT));
       transaction = await sequelize.transaction();
-      const result = await UserModel.create(data, { transaction });
-      delete result.dataValues.password;
+      let result = await UserModel.create(data, { transaction });
+      result = JSON.parse(JSON.stringify(result, null, 4));
+      delete result.password;
       await transaction.commit();
       return res.status(HttpStatus.OK).send(buildSingleSuccessMessage(result));
     } catch (error) {
@@ -127,7 +128,7 @@ export class UserController {
       if (validateError) {
         return res.status(HttpStatus.BAD_REQUEST).send(buildErrorMessage(validateError));
       }
-      const user = await UserModel.findOne({ where: { email: profile.email } });
+      let user = await UserModel.findOne({ where: { email: profile.email } });
       if (!user) {
         return res.status(HttpStatus.NOT_FOUND).send(buildErrorMessage(generalErrorDetails.E_004('Email not found')));
       }
@@ -142,9 +143,10 @@ export class UserController {
       }
       const token = await createToken({ id: user.id }, process.env.JWT_EXPIRED_TOKEN);
       const refreshToken = await createToken({ id: user.id }, process.env.JWT_EXPIRED_REFRESH_TOKEN);
-      delete user.dataValues.password;
-      user.dataValues.token = token;
-      user.dataValues.refreshToken = refreshToken;
+      user = JSON.parse(JSON.stringify(user, null, 4));
+      delete user.password;
+      (user as any).token = token;
+      (user as any).refreshToken = refreshToken;
       let dataToken = [
         {
           token: refreshToken,
