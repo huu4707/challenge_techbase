@@ -4,6 +4,7 @@ import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import { mainUserRoutes } from './services/user/routes';
+import { mainMedicineRoutes } from './services/medicine/routes';
 import { logger } from './utils/logger';
 require('dotenv').config();
 
@@ -63,5 +64,6 @@ export default class BootStrapService {
     this.app.use(this.rootDocsPreFix, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     logger.info({ label: 'Swagger', message: `Link docs swagger ${'http://' + HOST + this.rootDocsPreFix}` });
     this.app.use(this.rootAPIPreFix, mainUserRoutes);
+    this.app.use(this.rootAPIPreFix, mainMedicineRoutes);
   }
 }

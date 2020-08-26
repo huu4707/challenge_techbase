@@ -1,9 +1,8 @@
-//100 => 199
+//200 => 299
 import { IErrorDetail } from '../responses';
 import { buildErrorDetail } from './index';
 
 const userErrorDetails = {
-  // All order items must same seller
   E_2OO(detail: string = null): IErrorDetail {
     const e = buildErrorDetail('200', 'Email already exists ', detail);
     return e;

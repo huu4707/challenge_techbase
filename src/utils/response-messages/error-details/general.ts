@@ -7,6 +7,7 @@ const generalErrorDetails = {
   /** Internal server error, detail should be null if you cannot detect error */
   E_OO1(error: any = null, detail: string = null): IErrorDetail {
     if (error && buildingEnv.includes(process.env.NODE_ENV)) {
+      // console.log('error', error);
       logger.error({ label: 'Error 500', message: error.message });
     }
     const e = buildErrorDetail('001', 'Internal server error', detail);

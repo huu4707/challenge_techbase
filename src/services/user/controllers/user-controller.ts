@@ -37,7 +37,7 @@ export class UserController {
    * /user/register:
    *   post:
    *     tags:
-   *       - Customer
+   *       - User
    *     name: register
    *     parameters:
    *     - in: "body"
@@ -99,7 +99,7 @@ export class UserController {
    * /user/login:
    *   post:
    *     tags:
-   *       - Customer
+   *       - User
    *     name: register
    *     parameters:
    *     - in: "body"

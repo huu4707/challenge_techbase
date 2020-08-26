@@ -1,6 +1,5 @@
 import * as express from 'express';
 import { UserController } from '../controllers/user-controller';
-import { mustBeUser } from '../../../utils/middleware/user-middleware';
 require('dotenv').config();
 
 export class UserRoutes {
