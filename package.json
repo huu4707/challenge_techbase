@@ -14,7 +14,6 @@
     "typecheck": "tsc --noEmit",
     "ts-start-server": "set NODE_ENV=development&&nodemon --exec ts-node -r dotenv/config ./src/index.ts",
     "js-start-server": "node ./dist/index.js",
-    "js-start-server-watch": "nodemon ./dist/server.js",
     "test": "jest --forceExit --coverage --verbose --runInBand --colors --no-env"
   },
   "dependencies": {
