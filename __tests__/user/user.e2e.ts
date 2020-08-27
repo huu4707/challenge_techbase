@@ -18,7 +18,7 @@ beforeAll(async () => {
 
 jest.setTimeout(50000);
 
-xdescribe('Register', () => {
+describe('Register', () => {
   const expectedFailedResult = {
     errors: expect.toBeArray()
   };

@@ -39,7 +39,7 @@ MedicineModel.init(
     },
     deletedAt: {
       field: 'deleted_at',
-      type: 'TIMESTAMP'
+      type: 'TIMESTAMP NULL'
     }
   },
   {

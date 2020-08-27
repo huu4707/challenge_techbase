@@ -8,13 +8,13 @@ interface IRequestOptions {
   url: string;
   method: 'get' | 'post' | 'put' | 'delete';
   data?: any;
-  headers?: [IHeaders];
+  headers?: IHeaders;
   params?: any;
 }
 
 interface IResponse {
   status: number;
-  headers: IHeaders[];
+  headers: IHeaders;
   response: {
     data: any;
     error: any;
@@ -41,4 +41,4 @@ class SetupRequest {
   };
 }
 
-export { SetupRequest };
+export { SetupRequest, IHeaders };
