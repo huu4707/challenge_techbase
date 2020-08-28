@@ -20,3 +20,5 @@ II: Chạy unit test
 chạy lệnh yarn test
 
 III: Tài liệu Api
+
+http(s)://SERVER_HOST:SERVER_PORT/docs/v1
